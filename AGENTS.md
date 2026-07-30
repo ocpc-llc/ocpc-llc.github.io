@@ -50,7 +50,19 @@ These are per-edition copies, so edits to the header/footer must be made in the 
 
 **Uniform navbar.** Every page in the Summer 2026 cluster (the `2026s` portal, the `hk`/`iasi` sub-sites, and the root `archive.html`) shares the same navbar skeleton: `[OCPC logo →/] [ Hong Kong | Iași toggle ] …middle… [Discord blurple-SVG icon] [Archive]`. The toggle (left, by the logo) and the right-anchored (`ms-auto`) Discord+Archive group sit in the **same place on every page**; only the *middle* changes — the venue sub-sites slot in Details / Schedule / Contest info / Sponsors / Contact. On a sub-site the toggle highlights the current camp (`btn-primary active`) and the *other* button preserves the relative path (`{{ page.url | replace: '/2026s/hk/', '/2026s/iasi/' }}`), so e.g. HK→Sponsors toggles straight to Iași→Sponsors; on the portal/archive both toggle buttons just link to the two landing pages.
 
-The root `docs/before.html`/`after.html` (now used only by `archive.html`) carry the same navbar; their footer's contact email is **assembled in JavaScript** (so `oleksandr@ocpc.camp` / `mailto:` never appear literally in the HTML). The portal's own `docs/2026s/after.html` footer additionally shows the header-image credits.
+`archive.html` borrows the current season's chrome (`{% include_relative {{ site.data.current.current_season }}/before.html %}`), so there is no root `before.html`/`after.html`. The portal footer's contact email is **assembled in JavaScript** (so `oleksandr@ocpc.camp` / `mailto:` never appear literally in the HTML) — with one deliberate exception, the season legal page (see below). The portal's own `docs/2026s/after.html` footer additionally shows the header-image credits.
+
+### Legal pages & card-payment compliance (added July 2026)
+
+In July 2026 Wise **revoked card acquiring** for OCPC LLC after a site review: ocpc.camp showed no registered business name/address, no refund or cancellation policy, and the root page was a blank "Redirecting…" stub. The site now carries a compliance layer — **keep it intact when forking a new season**, or card payments are at risk again:
+
+- **`docs/<season>/legal.html`** (portal chrome) is the season **Terms & Refund Policy**: operator identity (**OCPC LLC, 8 The Green STE A, Dover, DE 19901, United States** — the merchant of record, as printed on Wise invoices), services & pricing, payment terms, and the refund policy (**full refund before camp start, none after**). The contact email is **plain text on this page only** (compliance reviewers must see it; JS-assembly stays everywhere else).
+- **Every footer** in the season cluster (`after.html` of the portal and each venue) carries a one-line business identity: `ocpc.camp is operated by OCPC LLC · <address> · Terms & Refund Policy`.
+- **Venue `legal.html`** pages keep the host-university submission/IP terms (the host is "Camp Host", not the operator) and link to the season terms.
+- **Root `docs/index.html` and `docs/legal.html`** still meta-refresh to the current season but contain real fallback content incl. the business line — crawlers that don't follow meta-refresh must not see a blank page.
+- The portal fee/registration sections state the merchant, link the terms (`id="fees"` / `id="registration"` anchors), and say "By registering you agree…"; venue registration sections carry the same one-liner.
+
+These requirements are card-network rules (any acquirer will check the same list), so they apply regardless of Wise.
 
 ### Data-driven content (`docs/_data/<season>/`)
 

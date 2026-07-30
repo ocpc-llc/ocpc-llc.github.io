@@ -3,11 +3,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh" content="0; url=/{{ site.data.current.current_season }}/" />
   <link rel="canonical" href="/{{ site.data.current.current_season }}/" />
-  <title>Redirecting…</title>
+  <title>OCPC – Osijek Competitive Programming Camp</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="icon" href="/images/ocpc_favicon.png" />
 </head>
 <body>
-  <p>If you are not redirected automatically, <a href="/{{ site.data.current.current_season }}/">go to the current OCPC season</a>.</p>
+  <div class="container text-center my-5" style="max-width: 640px;">
+    <img src="/images/ocpc_light.svg" alt="OCPC logo" style="max-width: 220px;" class="mb-4" />
+    <h1 class="h4 mb-3">Osijek Competitive Programming Camp</h1>
+    <p>
+      A camp preparing top university teams for the ICPC and similar programming competitions:
+      ICPC-style contests with analysis sessions, onsite and online. Taking you to the current
+      season…
+    </p>
+    <p class="mb-4">
+      <a class="btn btn-primary" href="/{{ site.data.current.current_season }}/">Current season →</a>
+      <a class="btn btn-outline-secondary" href="/archive.html">Past editions</a>
+    </p>
+    <p class="text-muted" style="font-size: 0.85rem;">
+      ocpc.camp is operated by OCPC LLC · 8 The Green STE A, Dover, DE 19901, United States<br />
+      <a href="/legal.html">Terms &amp; Refund Policy</a>
+    </p>
+  </div>
 </body>
 </html>
