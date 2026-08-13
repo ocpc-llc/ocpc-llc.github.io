@@ -1,0 +1,33 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OCPC – What? Where? When?</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="icon" href="/images/ocpc_favicon.png" />
+</head>
+<body>
+  <div class="container text-center my-5" style="max-width: 640px;">
+    <img src="/images/ocpc_light.svg" alt="OCPC logo" style="max-width: 220px;" class="mb-4" />
+    <h1 class="h4 mb-3">What? Where? When?</h1>
+    <p id="msg">Taking you to the game&hellip;</p>
+  </div>
+  <script>
+    // Current game-server address; empty = no game running right now.
+    // Repoint with tools/what_where_when/set_game_url.sh in the superproject
+    // (this page is served at https://ocpc.camp/what-where-when).
+    const GAME_URL = ""; // GAME_URL_MARKER
+    const msg = document.getElementById("msg");
+    if (GAME_URL) {
+      msg.innerHTML = 'Taking you to the game&hellip; If nothing happens, ' +
+        '<a href="' + GAME_URL + '">click here</a>.';
+      location.replace(GAME_URL);
+    } else {
+      msg.textContent = "No game is currently running — check back at game time!";
+    }
+  </script>
+</body>
+</html>
