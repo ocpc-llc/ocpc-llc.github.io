@@ -1,4 +1,4 @@
 # Address of the currently running What? Where? When? game server; empty
 # string = no game running. Rewritten by tools/what_where_when/set_game_url.sh
 # in the superproject; read by docs/what-where-when/{,admin/}index.html.
-url: ""
+url: "https://shareholders-link-fixtures-fantasy.trycloudflare.com"
